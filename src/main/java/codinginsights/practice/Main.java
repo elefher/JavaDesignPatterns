@@ -1,17 +1,10 @@
 package codinginsights.practice;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,7 +12,6 @@ import javax.swing.JPanel;
 import codinginsights.practice.Pooling.Dot;
 import codinginsights.practice.Pooling.DotPool;
 import codinginsights.practice.Pooling.Line;
-import sun.rmi.runtime.Log;
 
 /**
  * Created by elefher on 3/10/17.

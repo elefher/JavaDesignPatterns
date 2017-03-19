@@ -3,8 +3,6 @@ package codinginsights.practice.Pooling;
 import java.util.Iterator;
 import java.util.UUID;
 
-import javax.swing.text.html.HTMLDocument;
-
 /**
  * Created by elefher on 3/19/17.
  */

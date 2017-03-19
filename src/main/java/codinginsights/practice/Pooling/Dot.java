@@ -1,6 +1,5 @@
 package codinginsights.practice.Pooling;
 
-import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
