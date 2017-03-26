@@ -1,10 +1,9 @@
 package codinginsights.practice;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Shape;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +11,8 @@ import javax.swing.JPanel;
 import codinginsights.practice.Pooling.Dot;
 import codinginsights.practice.Pooling.DotPool;
 import codinginsights.practice.Pooling.Line;
+import codinginsights.practice.Prototype.DotPrototype;
+import codinginsights.practice.Prototype.DotSpawner;
 
 /**
  * Created by elefher on 3/10/17.
@@ -25,16 +26,82 @@ public class Main extends JPanel {
   private ArrayList<Dot> dots;
   private Line line;
 
+  DotPrototype red1;
+  DotPrototype red2;
+  DotPrototype red3;
+  DotPrototype yellow1;
+  DotPrototype yellow2;
+  DotPrototype yellow3;
+  DotPrototype green1;
+  DotPrototype green2;
+  DotPrototype green3;
+
+  /**
+   * A temporary solution until to use Junit
+   */
+
   public Main() {
-	dPool = new DotPool(2);
-	dots = new ArrayList<Dot>();
-
-	line = new Line();
-
-	test();
+//	poolingTesting();
+	prototypeTesting();
   }
 
-  private void test(){
+  private void prototypeTesting(){
+
+	DotSpawner.initialize();
+
+	Random rand = new Random();
+
+	red1 = (DotPrototype) DotSpawner.getDot("RED").clone();
+	red1.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+	red2 = (DotPrototype) DotSpawner.getDot("RED").clone();
+	red2.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+	red3 = (DotPrototype) DotSpawner.getDot("RED").clone();
+	red3.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+
+	yellow1 = (DotPrototype) DotSpawner.getDot("YELLOW").clone();
+	yellow1.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+	yellow2 = (DotPrototype) DotSpawner.getDot("YELLOW").clone();
+	yellow2.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+	yellow3 = (DotPrototype) DotSpawner.getDot("YELLOW").clone();
+	yellow3.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+
+	green1 = (DotPrototype) DotSpawner.getDot("GREEN").clone();
+	green1.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+	green2 = (DotPrototype) DotSpawner.getDot("GREEN").clone();
+	green2.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+	green3 = (DotPrototype) DotSpawner.getDot("GREEN").clone();
+	green3.setPosition(rand.nextInt(W_WIDTH - 20) + 10, rand.nextInt(W_HEIGHT - 20) + 10);
+  }
+
+
+  @Override
+  public void paintComponent(Graphics g) {
+	super.paintComponent(g);
+	Graphics2D g2 = (Graphics2D) g;
+
+	drawDots(g2, red1);
+	drawDots(g2, red2);
+	drawDots(g2, red3);
+
+	drawDots(g2, yellow1);
+	drawDots(g2, yellow2);
+	drawDots(g2, yellow3);
+
+	drawDots(g2, green1);
+	drawDots(g2, green2);
+	drawDots(g2, green3);
+  }
+
+  private void drawDots(Graphics2D g2, DotPrototype dot){
+	g2.setPaint(dot.getDotColor());
+	g2.fillOval(dot.getX(), dot.getY(), dot.getRadious() * 2, dot.getRadious() * 2);
+  }
+
+  private void poolingTesting(){
+	dPool = new DotPool(2);
+	dots = new ArrayList<Dot>();
+	line = new Line();
+
 	System.out.println("Pooling Usage");
 	System.out.println("Init Pool Size " + dPool.size());
 
@@ -71,23 +138,23 @@ public class Main extends JPanel {
 	dPool.printAllDots();
   }
 
-  @Override
-  public void paintComponent(Graphics g) {
-	super.paintComponent(g);
-	Graphics2D g2 = (Graphics2D) g;
-
-	g2.setColor(Color.BLACK); // set the color to black
-
-	int poolSize = dPool.size();
-	for (int i = 0; i < poolSize; i++) {
-	  dPool.free(dots.get(i));
-	  Shape shape = dPool.get().getShape();		// get the shape (circle)
-	  g2.draw(shape);							// draw the circle
-	  g2.fill(shape);	 						// fill the circle with color (black)
-	}
-
-	g2.draw(line.getShape());   // draw the line
-  }
+//  @Override
+//  public void paintComponent(Graphics g) {
+//	super.paintComponent(g);
+//	Graphics2D g2 = (Graphics2D) g;
+//
+//	g2.setColor(Color.BLACK); // set the color to black
+//
+//	int poolSize = dPool.size();
+//	for (int i = 0; i < poolSize; i++) {
+//	  dPool.free(dots.get(i));
+//	  Shape shape = dPool.get().getShape();		// get the shape (circle)
+//	  g2.draw(shape);							// draw the circle
+//	  g2.fill(shape);	 						// fill the circle with color (black)
+//	}
+//
+//	g2.draw(line.getShape());   // draw the line
+//  }
 
   public static void main(String[] arg) {
 	JFrame frame = new JFrame("Object Pooling");
