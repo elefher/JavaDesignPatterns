@@ -9,10 +9,13 @@ public abstract class Gun {
   private int bullets;
   private boolean isReady;
 
-  public Gun(){}
+  public Gun(){
+	isReady = true;
+  }
 
   public Gun(int bullets){
 	this.bullets = bullets;
+	isReady = true;
   }
 
   public void setBullets(int bullets){
@@ -32,4 +35,5 @@ public abstract class Gun {
   }
 
   abstract public void shoot();
+  abstract public void reload();
 }
