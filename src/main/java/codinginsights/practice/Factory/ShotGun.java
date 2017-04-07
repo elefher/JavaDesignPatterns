@@ -7,18 +7,23 @@ package codinginsights.practice.Factory;
 public class ShotGun extends Gun {
 
   public ShotGun() {
-	super(20);
-  }
-
-  public void reload() {
-	gunIsReady(true);
+	super(3);
   }
 
   @Override
   public void shoot() {
 	if (isReady() && getBullets() > 0) {
 	  setBullets(getBullets() - 1);
-	  System.out.println("Gun is shooting. Left Boolets" + getBullets());
+	  System.out.println("Gun is shooting. Left Boolets " + getBullets());
+	}else{
+	  gunIsReady(false);
+	  System.out.println("Gun is empty!");
 	}
+  }
+
+  @Override
+  public void reload(){
+	setBullets(3);
+	gunIsReady(true);
   }
 }

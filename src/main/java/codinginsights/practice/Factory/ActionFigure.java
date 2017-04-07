@@ -9,7 +9,9 @@ public class ActionFigure {
   private Gun gun;
   private int Health = 100;
 
-  public ActionFigure(){}
+  public ActionFigure(){
+	this.gun = new Punch();
+  }
 
   public ActionFigure(Gun gun){
 	this.gun = gun;
@@ -25,5 +27,9 @@ public class ActionFigure {
 
   public void shoot(){
 	gun.shoot();
+  }
+
+  public void reload(){
+	gun.reload();
   }
 }

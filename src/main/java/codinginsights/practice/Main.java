@@ -3,11 +3,18 @@ package codinginsights.practice;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import codinginsights.practice.Factory.ActionFigure;
+import codinginsights.practice.Factory.FactoryActionFigure;
 import codinginsights.practice.Pooling.Dot;
 import codinginsights.practice.Pooling.DotPool;
 import codinginsights.practice.Pooling.Line;
@@ -42,10 +49,41 @@ public class Main extends JPanel {
 
   public Main() {
 //	poolingTesting();
-	prototypeTesting();
+//	prototypeTesting();
+	factoryTesting();
   }
 
-  private void prototypeTesting(){
+  private void factoryTesting(){
+	ActionFigure figure = FactoryActionFigure.createFigurePunch();
+	System.out.println("Action figure without gun created!");
+	System.out.print("Figure is shooting : ");
+	figure.shoot();
+	System.out.println("figure is shooting 3 times : ");
+	figure.shoot();
+	figure.shoot();
+	figure.shoot();
+
+	System.out.println();
+
+	ActionFigure figureGun = FactoryActionFigure.createFigureShotGun();
+	System.out.println("Action figure with gun created!");
+	System.out.print("Figure with gun is shooting : ");
+	figureGun.shoot();
+	System.out.print("Figure with gun is shooting 3 times: ");
+	figureGun.shoot();
+	figureGun.shoot();
+	figureGun.shoot();
+	System.out.print("Figure with gun is shooting : ");
+	figureGun.shoot();
+	System.out.print("Figure with gun reloads gun : ");
+	figureGun.reload();
+	System.out.print("Figure with gun is shooting : ");
+	figureGun.shoot();
+
+
+  }
+
+  private void prototypeTesting() {
 
 	DotSpawner.initialize();
 
@@ -92,12 +130,12 @@ public class Main extends JPanel {
 	drawDots(g2, green3);
   }
 
-  private void drawDots(Graphics2D g2, DotPrototype dot){
+  private void drawDots(Graphics2D g2, DotPrototype dot) {
 	g2.setPaint(dot.getDotColor());
 	g2.fillOval(dot.getX(), dot.getY(), dot.getRadious() * 2, dot.getRadious() * 2);
   }
 
-  private void poolingTesting(){
+  private void poolingTesting() {
 	dPool = new DotPool(2);
 	dots = new ArrayList<Dot>();
 	line = new Line();
@@ -157,10 +195,70 @@ public class Main extends JPanel {
 //  }
 
   public static void main(String[] arg) {
-	JFrame frame = new JFrame("Object Pooling");
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setSize(W_WIDTH, W_HEIGHT);
-	frame.getContentPane().add(new Main());
-	frame.setVisible(true);
+//	JFrame frame = new JFrame("Prototype Pattern");
+//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	frame.setSize(W_WIDTH, W_HEIGHT);
+//	frame.getContentPane().add(new Main());
+//	frame.setVisible(true);
+
+	Main main = new Main();
+
+//	List names = new ArrayList();
+//
+//	names.add("Mahesh");
+//	names.add("Suresh");
+//	names.add("Ramesh");
+//	names.add("Naresh");
+//	names.add("Kalpesh");
+//
+//	names.forEach(System.out::println);
+//
+//	List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+//	List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+//	System.out.println(filtered.toString());
+//
+//	List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+//	//get list of unique squares
+//	List<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(Collectors.toList());
+//	System.out.println(squaresList.toString());
+//	Random random = new Random();
+//
+//	random.ints().limit(10).forEach(System.out::println);
+//
+//	numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+//
+//	IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x).summaryStatistics();
+//
+//	System.out.println("Highest number in List : " + stats.getMax());
+//	System.out.println("Lowest number in List : " + stats.getMin());
+//	System.out.println("Sum of all numbers : " + stats.getSum());
+//	System.out.println("Average of all numbers : " + stats.getAverage());
+//
+//	Integer value1 = null;
+//	Integer value2 = new Integer(10);
+//
+//	//Optional.ofNullable - allows passed parameter to be null.
+//	Optional<Integer> a = Optional.ofNullable(value1);
+//
+//	//Optional.of - throws NullPointerException if passed parameter is null
+//	Optional<Integer> b = Optional.of(value2);
+//	main.testOptional(a, b);
+  }
+
+  public void testOptional(Optional<Integer> a, Optional<Integer> b){
+
+	//Optional.isPresent - checks the value is present or not
+
+	System.out.println("First parameter is present: " + a.isPresent());
+	System.out.println("Second parameter is present: " + b.isPresent());
+
+	//Optional.orElse - returns the value if present otherwise returns
+	//the default value passed.
+	Integer value1 = a.orElse(new Integer(1));
+
+	//Optional.get - gets the value, value should be present
+	Integer value2 = b.get();
+
+	System.out.println("Optional test outcome is = " + (value1 + value2));
   }
 }
