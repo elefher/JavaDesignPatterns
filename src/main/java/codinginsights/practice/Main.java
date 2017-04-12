@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import codinginsights.practice.DependencyInjection.Player;
+import codinginsights.practice.DependencyInjection.PlayerInjection;
+import codinginsights.practice.DependencyInjection.PlayerWithBigHead;
+import codinginsights.practice.DependencyInjection.PlayerWithRegularHead;
 import codinginsights.practice.Factory.ActionFigure;
 import codinginsights.practice.Factory.FactoryActionFigure;
 import codinginsights.practice.Pooling.Dot;
@@ -50,7 +54,21 @@ public class Main extends JPanel {
   public Main() {
 //	poolingTesting();
 //	prototypeTesting();
-	factoryTesting();
+//	factoryTesting();
+	dependencyInjectionTesting();
+  }
+
+  private void dependencyInjectionTesting(){
+	PlayerInjection playerInj = new PlayerWithBigHead();
+
+	Player player = playerInj.getPlayer();
+	player.playerMessage();
+
+	System.out.println();
+
+	playerInj = new PlayerWithRegularHead();
+	player = playerInj.getPlayer();
+	player.playerMessage();
   }
 
   private void factoryTesting(){
