@@ -7,6 +7,6 @@ package codinginsights.practice.DependencyInjection;
 public class PlayerWithRegularHead implements PlayerInjection {
   @Override
   public Player getPlayer() {
-	return new PlayerRegularHead(new RegularHead());
+	return new CustomPlayer(new RegularHead());
   }
 }

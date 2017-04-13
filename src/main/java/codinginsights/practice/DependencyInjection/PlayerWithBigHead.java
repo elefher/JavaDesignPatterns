@@ -7,6 +7,6 @@ package codinginsights.practice.DependencyInjection;
 public class PlayerWithBigHead implements PlayerInjection {
   @Override
   public Player getPlayer() {
-	return new PlayerBigHead(new BigHead());
+	return new CustomPlayer(new BigHead());
   }
 }
