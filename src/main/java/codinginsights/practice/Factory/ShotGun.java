@@ -14,7 +14,7 @@ public class ShotGun extends Gun {
   public void shoot() {
 	if (isReady() && getBullets() > 0) {
 	  setBullets(getBullets() - 1);
-	  System.out.println("Gun is shooting. Left Boolets " + getBullets());
+	  System.out.println("Gun is shooting. Left Bulets " + getBullets());
 	}else{
 	  gunIsReady(false);
 	  System.out.println("Gun is empty!");
