@@ -24,6 +24,8 @@ import codinginsights.practice.Pooling.DotPool;
 import codinginsights.practice.Pooling.Line;
 import codinginsights.practice.Prototype.DotPrototype;
 import codinginsights.practice.Prototype.DotSpawner;
+import codinginsights.practice.State.GunContext;
+import codinginsights.practice.State.ShotGunHasAmmo;
 
 /**
  * Created by elefher on 3/10/17.
@@ -55,7 +57,28 @@ public class Main extends JPanel {
 //	poolingTesting();
 //	prototypeTesting();
 //	factoryTesting();
-	dependencyInjectionTesting();
+//	dependencyInjectionTesting();
+	stateTesting();
+  }
+
+  private void stateTesting(){
+	GunContext gun = new GunContext();
+
+	gun.fire();
+	gun.fire();
+	gun.fire();
+	gun.fire();
+	gun.fire();
+	gun.reload(4);
+	gun.fire();
+	gun.fire();
+	gun.fire();
+	gun.addBullets(2);
+	gun.fire();
+	gun.fire();
+	gun.fire();
+	gun.fire();
+	gun.fire();
   }
 
   private void dependencyInjectionTesting(){
