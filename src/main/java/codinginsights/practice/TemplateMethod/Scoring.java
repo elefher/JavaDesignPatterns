@@ -10,6 +10,6 @@ abstract class Scoring {
 	return computation1() + computation2();
   }
 
-  abstract float computation1();
-  abstract float computation2();
+  abstract protected float computation1();
+  abstract protected float computation2();
 }

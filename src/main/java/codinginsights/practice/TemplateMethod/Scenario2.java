@@ -17,12 +17,12 @@ public class Scenario2 extends Scoring {
   }
 
   @Override
-  float computation1() {
-	return correctResp * 0.3f;
+  protected float computation1() {
+	return correctResp * 0.9f / totalQuests;
   }
 
   @Override
-  float computation2() {
+  protected float computation2() {
 	float bonus = 0;
 
 	if (correctResp >= 5 && time < 300){
