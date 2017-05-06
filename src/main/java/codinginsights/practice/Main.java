@@ -26,6 +26,8 @@ import codinginsights.practice.Prototype.DotPrototype;
 import codinginsights.practice.Prototype.DotSpawner;
 import codinginsights.practice.State.GunContext;
 import codinginsights.practice.State.ShotGunHasAmmo;
+import codinginsights.practice.TemplateMethod.Scenario1;
+import codinginsights.practice.TemplateMethod.Scenario2;
 
 /**
  * Created by elefher on 3/10/17.
@@ -58,7 +60,16 @@ public class Main extends JPanel {
 //	prototypeTesting();
 //	factoryTesting();
 //	dependencyInjectionTesting();
-	stateTesting();
+//	stateTesting();
+	templateMethodTesting();
+  }
+
+  private void templateMethodTesting(){
+	Scenario1 sc1 = new Scenario1();
+	System.out.println("The score from scenario 1 is: " + sc1.computeScore());
+
+	Scenario2 sc2 = new Scenario2();
+	System.out.println("The score from scenario 2 is: " + sc2.computeScore());
   }
 
   private void stateTesting(){
