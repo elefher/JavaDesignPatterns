@@ -66,10 +66,10 @@ public class Main extends JPanel {
 
   private void templateMethodTesting(){
 	Scenario1 sc1 = new Scenario1();
-	System.out.println("The score from scenario 1 is: " + sc1.computeScore());
+	System.out.println("The score from scenario 1 is: " + sc1.computeScore() * 100 + "%");
 
 	Scenario2 sc2 = new Scenario2();
-	System.out.println("The score from scenario 2 is: " + sc2.computeScore());
+	System.out.println("The score from scenario 2 is: " + sc2.computeScore() * 100 + "%");
   }
 
   private void stateTesting(){
