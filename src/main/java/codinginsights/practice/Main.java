@@ -13,6 +13,9 @@ import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import codinginsights.practice.Decorator.CommonSword;
+import codinginsights.practice.Decorator.ExcaliburSword;
+import codinginsights.practice.Decorator.Sword;
 import codinginsights.practice.DependencyInjection.Player;
 import codinginsights.practice.DependencyInjection.PlayerInjection;
 import codinginsights.practice.DependencyInjection.PlayerWithBigHead;
@@ -61,7 +64,16 @@ public class Main extends JPanel {
 //	factoryTesting();
 //	dependencyInjectionTesting();
 //	stateTesting();
-	templateMethodTesting();
+//	templateMethodTesting();
+	decoratorTesting();
+  }
+
+  private void decoratorTesting(){
+	Sword commonSword = new CommonSword("Common Sword");
+	commonSword.attributes();
+
+	Sword excalibur = new ExcaliburSword(commonSword);
+	excalibur.attributes();
   }
 
   private void templateMethodTesting(){
