@@ -40,8 +40,14 @@ public class ExcaliburSword extends SwordDecorator {
   }
 
   @Override
+  public void magicalPower() {
+	System.out.println(getSwordName() + " has a magical power as well. It blinds its enemies!");
+  }
+
+  @Override
   public void attributes() {
 	System.out.println("This is not a " + commonSwordName + " any more. This is the " + getSwordName() + " sword." +
 			" Its power increased from " + commonSwordPower + " to " + getPower() + "!");
+	magicalPower();
   }
 }

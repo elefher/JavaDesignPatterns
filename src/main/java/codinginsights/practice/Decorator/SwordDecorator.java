@@ -12,5 +12,6 @@ public abstract class SwordDecorator implements Sword {
 	this.sword = sword;
   }
 
+  public abstract void magicalPower();
   public abstract void attributes();
 }

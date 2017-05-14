@@ -72,6 +72,8 @@ public class Main extends JPanel {
 	Sword commonSword = new CommonSword("Common Sword");
 	commonSword.attributes();
 
+	System.out.println("");
+
 	Sword excalibur = new ExcaliburSword(commonSword);
 	excalibur.attributes();
   }
