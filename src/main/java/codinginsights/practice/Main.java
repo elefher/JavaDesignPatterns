@@ -22,6 +22,8 @@ import codinginsights.practice.DependencyInjection.PlayerWithBigHead;
 import codinginsights.practice.DependencyInjection.PlayerWithRegularHead;
 import codinginsights.practice.Factory.ActionFigure;
 import codinginsights.practice.Factory.FactoryActionFigure;
+import codinginsights.practice.Observer.ClassSubject;
+import codinginsights.practice.Observer.StudentObserver;
 import codinginsights.practice.Pooling.Dot;
 import codinginsights.practice.Pooling.DotPool;
 import codinginsights.practice.Pooling.Line;
@@ -65,7 +67,25 @@ public class Main extends JPanel {
 //	dependencyInjectionTesting();
 //	stateTesting();
 //	templateMethodTesting();
-	decoratorTesting();
+//	decoratorTesting();
+	observerTesting();
+  }
+
+  private void observerTesting(){
+	ClassSubject course = new ClassSubject();
+
+	StudentObserver lefteris = new StudentObserver(course, "Lefteris");
+	StudentObserver eric = new StudentObserver(course, "Eric");
+	StudentObserver jonathan = new StudentObserver(course, "Jonathan");
+	StudentObserver alan = new StudentObserver(course, "Alan");
+
+	course.setState(1);
+	System.out.println();
+	course.setState(2);
+
+	course.dettach(jonathan);
+	System.out.println();
+	course.setState(3);
   }
 
   private void decoratorTesting(){
