@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import javax.jws.soap.SOAPBinding;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -20,6 +21,8 @@ import codinginsights.practice.DependencyInjection.Player;
 import codinginsights.practice.DependencyInjection.PlayerInjection;
 import codinginsights.practice.DependencyInjection.PlayerWithBigHead;
 import codinginsights.practice.DependencyInjection.PlayerWithRegularHead;
+import codinginsights.practice.Facade.User;
+import codinginsights.practice.Facade.UserActions;
 import codinginsights.practice.Factory.ActionFigure;
 import codinginsights.practice.Factory.FactoryActionFigure;
 import codinginsights.practice.Observer.ClassSubject;
@@ -57,7 +60,7 @@ public class Main extends JPanel {
   DotPrototype green3;
 
   /**
-   * A temporary solution until to use Junit
+   * A temporary solution until using Junit
    */
 
   public Main() {
@@ -68,7 +71,30 @@ public class Main extends JPanel {
 //	stateTesting();
 //	templateMethodTesting();
 //	decoratorTesting();
-	observerTesting();
+//	observerTesting();
+	facadeTesting();
+  }
+
+  private void facadeTesting(){
+	User user = new User();
+	user.setUsername("lefteris");
+	user.setPassword("delimitrou1");
+	user.setEmail("lefteris@codinginsights.blog");
+	user.setAmount(100);
+
+	System.out.println("Example: Using Actions so as to get access (login) to the system.");
+	System.out.println("Example with wrong credentials");
+	UserActions userActions = new UserActions();
+	userActions.userLogin(user);
+
+	System.out.println("");
+	System.out.println("Example: Fix credentals and try again.");
+	user.setPassword("delimitrou");
+	userActions.userLogin(user);
+
+	System.out.println("");
+	System.out.println("Example: Using Actions so as to get access to page.");
+	userActions.userAccessPage(user, 151);
   }
 
   private void observerTesting(){
