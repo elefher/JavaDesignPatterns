@@ -14,6 +14,9 @@ import javax.jws.soap.SOAPBinding;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import codinginsights.practice.Composite.CubLion;
+import codinginsights.practice.Composite.FemaleLion;
+import codinginsights.practice.Composite.MaleLion;
 import codinginsights.practice.Decorator.CommonSword;
 import codinginsights.practice.Decorator.ExcaliburSword;
 import codinginsights.practice.Decorator.Sword;
@@ -36,6 +39,7 @@ import codinginsights.practice.State.GunContext;
 import codinginsights.practice.State.ShotGunHasAmmo;
 import codinginsights.practice.TemplateMethod.Scenario1;
 import codinginsights.practice.TemplateMethod.Scenario2;
+import codinginsights.practice.Composite.Panthera;
 
 /**
  * Created by elefher on 3/10/17.
@@ -72,7 +76,47 @@ public class Main extends JPanel {
 //	templateMethodTesting();
 //	decoratorTesting();
 //	observerTesting();
-	facadeTesting();
+//	facadeTesting();
+	compositeTesting();
+  }
+
+  private void compositeTesting(){
+	Panthera king = new MaleLion("Fang", "King");
+	Panthera queen = new FemaleLion("Glory", "Queen");
+	Panthera leadHunter = new FemaleLion("Zouzou", "Lead Hunter");
+	Panthera hunter1 = new FemaleLion("Ariel", "Hunter");
+	Panthera hunter2 = new FemaleLion("Amra", "Hunter");
+	Panthera hunter3 = new FemaleLion("Rori", "Hunter");
+	Panthera hunter4 = new FemaleLion("Luna", "Hunter");
+	Panthera hunter5 = new FemaleLion("Cleo", "Hunter");
+	Panthera cub1 = new CubLion("Max", "Cub");
+	Panthera cub2 = new CubLion("Bruno", "Cub");
+	Panthera cub3 = new CubLion("Ivan", "Cub");
+	Panthera cub4 = new CubLion("Jessy", "Cub");
+	Panthera cub5 = new CubLion("Zeus", "Cub");
+
+	// Let's create the pride of lions
+	// A king has a queen who helps the king
+	king.add(queen);
+
+	// Also, King has a Huntress
+	king.add(leadHunter);
+
+	// Some of hunters who are female lions have cubs
+	hunter1.add(cub1);
+	hunter1.add(cub3);
+	hunter2.add(cub2);
+	hunter4.add(cub4);
+	hunter4.add(cub5);
+
+	// Last but not least the king has the hunters as well
+	king.add(hunter1);
+	king.add(hunter2);
+	king.add(hunter3);
+	king.add(hunter4);
+	king.add(hunter5);
+
+	System.out.println(king.toString());
   }
 
   private void facadeTesting(){
