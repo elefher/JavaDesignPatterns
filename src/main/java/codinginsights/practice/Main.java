@@ -28,6 +28,10 @@ import codinginsights.practice.Facade.User;
 import codinginsights.practice.Facade.UserActions;
 import codinginsights.practice.Factory.ActionFigure;
 import codinginsights.practice.Factory.FactoryActionFigure;
+import codinginsights.practice.Mediator.Citizen;
+import codinginsights.practice.Mediator.Citizen1;
+import codinginsights.practice.Mediator.Mediator;
+import codinginsights.practice.Mediator.ServiceMediator;
 import codinginsights.practice.Observer.ClassSubject;
 import codinginsights.practice.Observer.StudentObserver;
 import codinginsights.practice.Pooling.Dot;
@@ -77,7 +81,15 @@ public class Main extends JPanel {
 //	decoratorTesting();
 //	observerTesting();
 //	facadeTesting();
-	compositeTesting();
+//	compositeTesting();
+	mediatorTesting();
+  }
+
+  private void mediatorTesting(){
+	Mediator mediator = new ServiceMediator();
+	Citizen1 citizen = new Citizen1(mediator);
+
+	citizen.newFirm();
   }
 
   private void compositeTesting(){
