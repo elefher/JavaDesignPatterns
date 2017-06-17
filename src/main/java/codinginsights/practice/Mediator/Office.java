@@ -1,17 +1,19 @@
 package codinginsights.practice.Mediator;
 
+import java.util.ArrayList;
+
 /**
  * Created by elefher on 6/14/17.
  */
 
 abstract class Office {
 
-  protected Mediator citizen;
+  protected Mediator mediator;
 
-  public Office(Mediator citizen){
-	this.citizen = citizen;
+  public Office(Mediator mediator){
+    this.mediator = mediator;
   }
 
-  public abstract void document(String document);
-  public abstract String getNewDocument();
+  public abstract void addNewDocument(ArrayList<String> documents);
+  protected abstract void nextStep(ArrayList<String> documents);
 }
