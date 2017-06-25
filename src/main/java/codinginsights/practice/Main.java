@@ -14,6 +14,11 @@ import javax.jws.soap.SOAPBinding;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import codinginsights.practice.Bridge.Bumblebee;
+import codinginsights.practice.Bridge.Gun1;
+import codinginsights.practice.Bridge.OptimusPrime;
+import codinginsights.practice.Bridge.Sword1;
+import codinginsights.practice.Bridge.Transformer;
 import codinginsights.practice.Composite.CubLion;
 import codinginsights.practice.Composite.FemaleLion;
 import codinginsights.practice.Composite.MaleLion;
@@ -82,7 +87,34 @@ public class Main extends JPanel {
 //	observerTesting();
 //	facadeTesting();
 //	compositeTesting();
-	mediatorTesting();
+//	mediatorTesting();
+	bridgeTesting();
+  }
+
+  private void bridgeTesting(){
+	System.out.println("Example 1");
+	Transformer transformer;
+	transformer = new OptimusPrime();
+	transformer.assemble(new Sword1());
+	transformer.printDetails();
+
+	System.out.println("Example 2");
+
+	transformer = new Bumblebee();
+	transformer.assemble(new Gun1());
+	transformer.printDetails();
+
+	System.out.println("Example 3");
+
+	transformer = new OptimusPrime();
+	transformer.assemble(new Gun1());
+	transformer.printDetails();
+
+	System.out.println("Example 4");
+
+	transformer = new Bumblebee();
+	transformer.assemble(new Sword1());
+	transformer.printDetails();
   }
 
   private void mediatorTesting(){
