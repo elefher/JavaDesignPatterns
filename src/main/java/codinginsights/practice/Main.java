@@ -33,6 +33,8 @@ import codinginsights.practice.Facade.User;
 import codinginsights.practice.Facade.UserActions;
 import codinginsights.practice.Factory.ActionFigure;
 import codinginsights.practice.Factory.FactoryActionFigure;
+import codinginsights.practice.Flyweight.Enemy;
+import codinginsights.practice.Flyweight.EnemyFactory;
 import codinginsights.practice.Mediator.Citizen;
 import codinginsights.practice.Mediator.Citizen1;
 import codinginsights.practice.Mediator.Mediator;
@@ -92,7 +94,29 @@ public class Main extends JPanel {
 //	compositeTesting();
 //	mediatorTesting();
 //	bridgeTesting();
-	proxyTesting();
+//	proxyTesting();
+	flyWeightTesting();
+  }
+
+  private void flyWeightTesting(){
+	Enemy e = EnemyFactory.getEnemy("Alpha");
+	System.out.println(e.toString());
+	e = EnemyFactory.getEnemy("Alpha");
+	System.out.println(e.toString());
+
+	System.out.println();
+
+	e = EnemyFactory.getEnemy("Beta");
+	System.out.println(e.toString());
+	e = EnemyFactory.getEnemy("Beta");
+	System.out.println(e.toString());
+
+	System.out.println();
+
+	e = EnemyFactory.getEnemy("Delta");
+	System.out.println(e.toString());
+	e = EnemyFactory.getEnemy("Delta");
+	System.out.println(e.toString());
   }
 
   private void proxyTesting(){
