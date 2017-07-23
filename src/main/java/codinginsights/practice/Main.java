@@ -44,6 +44,9 @@ import codinginsights.practice.Pooling.DotPool;
 import codinginsights.practice.Pooling.Line;
 import codinginsights.practice.Prototype.DotPrototype;
 import codinginsights.practice.Prototype.DotSpawner;
+import codinginsights.practice.Proxy.AdminExecute;
+import codinginsights.practice.Proxy.ExecuteCommand;
+import codinginsights.practice.Proxy.UserExecute;
 import codinginsights.practice.State.GunContext;
 import codinginsights.practice.State.ShotGunHasAmmo;
 import codinginsights.practice.TemplateMethod.Scenario1;
@@ -88,7 +91,29 @@ public class Main extends JPanel {
 //	facadeTesting();
 //	compositeTesting();
 //	mediatorTesting();
-	bridgeTesting();
+//	bridgeTesting();
+	proxyTesting();
+  }
+
+  private void proxyTesting(){
+	ExecuteCommand commands = new ExecuteCommand();
+	AdminExecute admin = new AdminExecute(commands);
+	UserExecute user = new UserExecute(commands);
+
+	System.out.println("Test Admin's rights!");
+	admin.cp();
+	admin.add();
+	admin.delete();
+	admin.display();
+	admin.sendMessage();
+
+	System.out.println();
+	System.out.println("Test User's rights!");
+	user.cp();
+	user.add();
+	user.delete();
+	user.display();
+	user.sendMessage();
   }
 
   private void bridgeTesting(){
