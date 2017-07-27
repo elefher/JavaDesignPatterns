@@ -51,6 +51,10 @@ import codinginsights.practice.Proxy.ExecuteCommand;
 import codinginsights.practice.Proxy.UserExecute;
 import codinginsights.practice.State.GunContext;
 import codinginsights.practice.State.ShotGunHasAmmo;
+import codinginsights.practice.Strategy.Character;
+import codinginsights.practice.Strategy.Jump;
+import codinginsights.practice.Strategy.Run;
+import codinginsights.practice.Strategy.SpecialPower;
 import codinginsights.practice.TemplateMethod.Scenario1;
 import codinginsights.practice.TemplateMethod.Scenario2;
 import codinginsights.practice.Composite.Panthera;
@@ -95,7 +99,18 @@ public class Main extends JPanel {
 //	mediatorTesting();
 //	bridgeTesting();
 //	proxyTesting();
-	flyWeightTesting();
+//	flyWeightTesting();
+	strategyTesting();
+  }
+
+  private void strategyTesting(){
+	Character character = new Character();
+	
+	character.setSpecialPower(new Run());
+	character.specialPower();
+
+	character.setSpecialPower(new Jump());
+	character.specialPower();
   }
 
   private void flyWeightTesting(){
